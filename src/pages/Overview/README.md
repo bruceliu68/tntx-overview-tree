@@ -25,18 +25,18 @@ const Demo = props => {
 			if (d) {
 				setChildData([
 					{
-						name: "字段名称", // 名称
-						nodeType: 10, // 类型
-						value: "SYSTEM_VB_TEST12", // 标识
+						name: "字段名称", // 名称 -- 必填
+						nodeType: 10, // 类型 -- 必填
+						value: "SYSTEM_VB_TEST12", // 标识 -- 必填
 						version: "V1", // 版本
-						id: "SYSTEM_VB_TEST12_10"
+						id: "SYSTEM_VB_TEST12_10" // -- 必填
 					},
 					{
-						name: "字段名称ce是长度啊", // 名称
-						nodeType: 10, // 类型
-						value: "SYSTEM_VB_TEST", // 标识
+						name: "字段名称ce是长度啊", // 名称 -- 必填
+						nodeType: 10, // 类型 -- 必填
+						value: "SYSTEM_VB_TEST", // 标识 -- 必填
 						version: "V1", // 版本
-						id: "SYSTEM_VB_TEST_10"
+						id: "SYSTEM_VB_TEST_10" // -- 必填
 					}
 				]);
 			} else {
