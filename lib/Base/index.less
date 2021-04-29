@@ -1,0 +1,94 @@
+.lb-overview{
+    background: #fff;
+    padding: 20px;
+    height: auto;
+    overflow: auto;
+    box-sizing: border-box;
+    color: #17233D;
+    font-size: 14px;
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    .link{
+        position: absolute;
+        background-color: #c7d0d9;
+    }
+    .lb-rule-tree-content{
+        color: #787F8E;
+        .root{
+            background: #126BFB;
+            border-radius: 4px;
+            color: #fff;
+            height: 58px;
+            padding: 8px 16px;
+            word-break: break-all;
+            box-sizing: border-box;
+        }
+        .u-plus, .u-minus{
+            text-align: center;
+            position: absolute;
+            right: -14px;
+            top: 16px;
+            line-height: 13px;
+            color: #126BFB;
+            display: inline-block;
+            background: #FCFDFF;
+            border: 1px solid #CCD9FD;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1;
+        }
+        .node{
+            position: relative;
+            width: 120px !important;
+            height: 28px;
+            background: #EAEEFA;
+            border: 1px solid #CCD9FD;
+            border-radius: 14px;
+            font-size: 12px;
+            line-height: 28px;
+            .img1{
+                position: absolute;
+                left: 2px;
+                top: 2px;
+            }
+            .s1{
+                position: absolute;
+                left: 30px;
+                top: 0;
+                display: inline-block;
+                width: 66px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+            .u-plus, .u-minus{
+                top: 6px;
+            }
+        }
+        .child-node{
+            border-bottom: 1px solid #c7d0d9;
+            min-width: 120px;
+            padding: 0 0 2px 4px;
+            font-size: 12px;
+            .s2{
+                vertical-align: middle;
+                margin-left: 4px;
+                margin-top: 2px;
+                display: inline-block;
+                max-width: 190px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+        .relation-node{
+            width: 120px;
+        }
+    }
+    img{
+        vertical-align: middle;
+        border-style: none;
+    }
+}
