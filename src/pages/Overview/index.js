@@ -9,7 +9,7 @@ import Base from "./Base";
 import { NODE_TYPE_MAP } from "./Base/constants";
 
 export default props => {
-	const { onClick, getChild, rootData, childData, rootName, data: allData = [], nodeTypeMap, noPlus } = props;
+	const { onClick, getData, data: childData, rootName, treeData = [], nodeTypeMap, noPlus } = props;
 	const [data, setData] = useState();
 	const [secondFloor, setSecondFloor] = useState();
 	const [rootHasRender, setRootHasRender] = useState(false);
@@ -18,10 +18,10 @@ export default props => {
 	const typeMap = nodeTypeMap || NODE_TYPE_MAP;
 
 	useEffect(() => {
-		if (!rootHasRender && rootData?.length > 0 && allData?.length === 0) { // 初始数据渲染根节点数据
+		if (!rootHasRender && childData?.length > 0 && treeData?.length === 0) { // 初始数据渲染根节点数据
 			let arr = [];
 			let initArr = [];
-			rootData.forEach((item, index) => {
+			childData.forEach((item, index) => {
 				const i = arr.findIndex(k => k.nodeType === item.nodeType);
 				if (i >= 0) {
 					initArr[i].children.push(item);
@@ -52,7 +52,7 @@ export default props => {
 			setData(obj);
 			setSecondFloor(initArr);
 			setRootHasRender(true);
-		} else if (rootHasRender && allData?.length === 0 && path) { // 渲染子节点数据
+		} else if (rootHasRender && treeData?.length === 0 && path) { // 渲染子节点数据
 			let newData = { ...data };
 			let currentNode = get(newData, path);
 			if (childData.length > 0) {
@@ -62,13 +62,13 @@ export default props => {
 			}
 			setData(newData);
 		}
-	}, [rootData, childData]);
+	}, [childData]);
 
 	useEffect(() => {
-		if (allData?.length > 0) {
+		if (treeData?.length > 0) {
 			let arr = [];
 			let initArr = [];
-			allData.forEach((item, index) => {
+			treeData.forEach((item, index) => {
 				const i = arr.findIndex(k => k.nodeType === item.nodeType);
 				if (i >= 0) {
 					initArr[i].children.push(item);
@@ -100,7 +100,7 @@ export default props => {
 			setData(obj);
 			setSecondFloor(newInitArr);
 		}
-	}, [allData]);
+	}, [treeData]);
 
 	const parseData = (data) => {
 		for (let i = 0; i < data.length; i++) {
@@ -121,8 +121,8 @@ export default props => {
 			value={data}
 			secondFloor={secondFloor}
 			getChild={(d) => {
-				if (getChild) {
-					getChild(d);
+				if (getData) {
+					getData(d);
 					setPath(d.path);
 				}
 			}}

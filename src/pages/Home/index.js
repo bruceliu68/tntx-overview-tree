@@ -10,7 +10,6 @@ import { cloneDeep } from "lodash";
 
 export default props => {
 	const [data, setData] = useState([]);
-	const [childData, setChildData] = useState([]);
 
 	useEffect(() => {
 		getData();
@@ -19,7 +18,7 @@ export default props => {
 	const getData = (d) => {
 		setTimeout(() => {
 			if (d) {
-				setChildData([
+				setData([
 					{
 						name: "字段名称", // 名称
 						nodeType: 10, // 类型
@@ -45,10 +44,9 @@ export default props => {
 		<div style={{ width: 1000, height: 800 }}>
 			<Overview
 				rootName="柳波测试根节点"
-				// data={allData}
-				rootData={data}
-				childData={childData}
-				getChild={(d) => {
+				// treeData={allData}
+				data={data}
+				getData={(d) => {
 					getData(d);
 				}}
 				onClick={(d) => {

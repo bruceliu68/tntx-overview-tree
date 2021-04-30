@@ -15,8 +15,7 @@ import Overview from "@tntx/overview-tree";
 import { mockData } from "./mockData";
 
 const Demo = props => {
-    const [rootData, setRootData] = useState([]);
-    const [childData, setChildData] = useState([]);
+    const [data, setData] = useState([]);
     
     useEffect(() => {
 		getData();
@@ -25,7 +24,7 @@ const Demo = props => {
 	const getData = (d) => {
 		setTimeout(() => {
 			if (d) {
-				setChildData([
+				setData([
 					{
 						name: "字段名称", // 名称 -- 必填
 						nodeType: 10, // 类型 -- 必填
@@ -42,7 +41,7 @@ const Demo = props => {
 					}
 				]);
 			} else {
-				setRootData(mockData);
+				setData(mockData);
 			}
 		}, 100);
 	};
@@ -50,9 +49,8 @@ const Demo = props => {
     return (
         <Overview
             rootName="我是根节点"
-            rootData={rootData}
-            childData={childData}
-            getChild={(d) => {
+            data={data}
+            getData={(d) => {
                 getData(d);
             }}
             onClick={(d) => {
@@ -72,12 +70,65 @@ ReactDOM.render(
 | 参数 | 说明 | 类型 | 默认值 |
 | ------------ | ------------ | ------------ | ------------ |
 | rootName | 根节点名称 | String | -- |
-| rootData | 根节点数据 | Arrary | -- |
-| childData | 子节点数据 | Arrary | -- |
+| data | 单层数据结构，组件内部已为你做了tree结构拼接 | Arrary | -- |
+| treeData | 如果你只想渲染你的树结构，请用此属性传入数据，此时data,getData属性将失效 | Arrary | ---|
 | nodeTypeMap | 节点数据配置 | Object | 往下看 |
 | noPlus | 某个节点无扩展 | Number | 10 |
-| getChild | 需要请求获取子节点数据回调 | Function | -- |
+| getData | 需要请求获取子节点数据回调 | Function | -- |
 | onClick | 点击节点回调 | Function | -- |
+
+#### data 数据结构
+```js
+[
+    {
+        name: "字段名称", // 名称 -- 必填
+        nodeType: 10, // 类型 -- 必填
+        value: "SYSTEM_VB_TEST12", // 标识 -- 必填
+        version: "V1", // 版本
+        id: "SYSTEM_VB_TEST12_10" // -- 必填
+    },
+    {
+        name: "字段名称ce是长度啊", // 名称 -- 必填
+        nodeType: 10, // 类型 -- 必填
+        value: "SYSTEM_VB_TEST", // 标识 -- 必填
+        id: "SYSTEM_VB_TEST_10" // -- 必填
+    }
+]
+```
+
+#### treeData 数据结构
+```js
+[
+    {
+        name: "字段名称", // 名称 -- 必填
+        nodeType: 10, // 类型 -- 必填
+        value: "SYSTEM_VB_TEST12", // 标识 -- 必填
+        id: "SYSTEM_VB_TEST12_10", // -- 必填
+        children: [
+            {
+                name: "字段名称ce是长度啊",
+                nodeType: 10,
+                value: "SYSTEM_VB_TEST",
+                id: "SYSTEM_VB_TEST_10",
+                children: [
+                    {
+                        name: "字段名称ce是长度啊",
+                        nodeType: 10,
+                        value: "SYSTEM_VB_TEST",
+                        id: "SYSTEM_VB_TEST_10"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        name: "字段名称ce是长度啊",
+        nodeType: 10,
+        value: "SYSTEM_VB_TEST",
+        id: "SYSTEM_VB_TEST_10"
+    }
+]
+```
 
 #### nodeTypeMap 默认可不填，内置数据如下：
 ```js

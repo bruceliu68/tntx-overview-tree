@@ -1,6 +1,6 @@
 {
   "name": "@tntx/overview-tree",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "树形概览图",
   "main": "lib/index.js",
   "scripts": {
