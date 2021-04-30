@@ -1,5 +1,7 @@
 ### @tntx/overview-tree 树形概览图
 
+![image](https://github.com/bruceliu68/tntx-overview-tree/blob/main/src/pages/Overview/Base/img/overview.png)
+
 #### 安装
 ```bash
 npm i @tntx/overview-tree
