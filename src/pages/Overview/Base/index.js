@@ -90,7 +90,7 @@ export default props => {
 						key={getHierarchyId(key, "root")}
 						style={style}
 						className="root"
-						title={value?.name}
+						title={typeof value?.name === "string" ? value?.name : ""}
 					>
 						<span className="text-ellipsis2">{value?.name}</span>
 					</div>

@@ -43,7 +43,7 @@ export default props => {
 	return (
 		<div style={{ width: 1000, height: 800 }}>
 			<Overview
-				rootName="柳波测试根节点"
+				rootName="柳波柳波测试根节点柳波测试根节点测试根节点"
 				// treeData={allData}
 				data={data}
 				getData={(d) => {

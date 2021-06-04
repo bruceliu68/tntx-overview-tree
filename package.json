@@ -1,10 +1,10 @@
 {
   "name": "@tntx/overview-tree",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "树形概览图",
   "main": "lib/index.js",
   "scripts": {
-    "start": "SYS_ENV=development webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "start": "SYS_ENV=development PORT=8723 webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "build": "SYS_ENV=production webpack --progress --config build/webpack.prod.conf.js",
     "dll": "webpack --config ./build/webpack.dll.conf.js",
     "lint": "eslint --ext .js,.vue src",
